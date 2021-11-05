@@ -9,7 +9,7 @@ import javax.ws.rs.Path;
  * @author acer
  */
 @Stateless
-@Path("artistas")
+@Path("/artistas")
 public class ArtistaController {
     
     /*@EJB

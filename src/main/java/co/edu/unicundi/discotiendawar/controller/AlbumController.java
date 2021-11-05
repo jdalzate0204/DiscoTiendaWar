@@ -6,13 +6,12 @@ import javax.ws.rs.Path;
 
 /**
  *
- * @author PAULA GUZMAN
+ * @author acer
  */
 @Stateless
-@Path("albumes")
+@Path("/albumes")
 public class AlbumController {
     
     /*@EJB
     private IAlbumService service;*/
-    
 }
