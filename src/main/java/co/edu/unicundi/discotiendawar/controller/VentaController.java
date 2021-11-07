@@ -1,7 +1,7 @@
 package co.edu.unicundi.discotiendawar.controller;
 
-import co.edu.unicundi.discotiendajar.entity.Formato;
-import co.edu.unicundi.discotiendajar.service.ICancionService;
+import co.edu.unicundi.discotiendajar.entity.Pago;
+import co.edu.unicundi.discotiendajar.service.IVentaService;
 import java.util.List;
 import javax.ejb.*;
 import javax.ws.rs.*;
@@ -12,17 +12,17 @@ import javax.ws.rs.core.*;
  * @author acer
  */
 @Stateless
-@Path("/canciones")
-public class CancionController {
+@Path("/ventas")
+public class VentaController {
     
     @EJB
-    private ICancionService service;
+    private IVentaService service;
     
     @GET
-    @Path("/listarFormato")
+    @Path("/listarPago")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response obtenerFormato(){
-        List<Formato> lista = service.obtenerFormato();
+    public Response obtenerPago() {
+        List<Pago> lista = service.obtenerPago();
         return Response.status(Response.Status.OK).entity(lista).build();
     }
 }

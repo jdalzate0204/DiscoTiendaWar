@@ -27,6 +27,7 @@ public class ApplicationConfig extends Application {
         resources.add(co.edu.unicundi.discotiendawar.controller.AlbumController.class);
         resources.add(co.edu.unicundi.discotiendawar.controller.ArtistaController.class);
         resources.add(co.edu.unicundi.discotiendawar.controller.CancionController.class);
+        resources.add(co.edu.unicundi.discotiendawar.controller.VentaController.class);
         resources.add(co.edu.unicundi.discotiendawar.exception.ExceptionHandler.class);
     }
     
