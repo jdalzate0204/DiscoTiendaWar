@@ -1,5 +1,6 @@
 package co.edu.unicundi.discotiendawar.controller;
 
+import co.edu.unicundi.discotiendajar.dto.ArtistaDto;
 import co.edu.unicundi.discotiendajar.entity.*;
 import co.edu.unicundi.discotiendajar.service.IArtistaService;
 import java.util.List;
@@ -32,6 +33,14 @@ public class ArtistaController {
     public Response obtenerGenero() {
         List<GeneroMusical> lista = service.obtenerGenero();
         return Response.status(Response.Status.OK).entity(lista).build();
+    }
+    
+    @POST
+    @Path("/guardar")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response guardar(ArtistaDto obj){
+       this.service.guardar(obj);
+       return Response.status(Response.Status.CREATED).build();
     }
     
 }
