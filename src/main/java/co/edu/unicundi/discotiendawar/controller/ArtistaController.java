@@ -2,6 +2,7 @@ package co.edu.unicundi.discotiendawar.controller;
 
 import co.edu.unicundi.discotiendajar.dto.ArtistaDto;
 import co.edu.unicundi.discotiendajar.entity.*;
+import co.edu.unicundi.discotiendajar.exception.ResourceIllegalArgumentException;
 import co.edu.unicundi.discotiendajar.service.IArtistaService;
 import java.util.List;
 import javax.ejb.*;
@@ -38,7 +39,7 @@ public class ArtistaController {
     @POST
     @Path("/guardar")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response guardar(ArtistaDto obj){
+    public Response guardar(ArtistaDto obj)throws ResourceIllegalArgumentException {
        this.service.guardar(obj);
        return Response.status(Response.Status.CREATED).build();
     }
