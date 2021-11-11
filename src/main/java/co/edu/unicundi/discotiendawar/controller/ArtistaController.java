@@ -39,7 +39,7 @@ public class ArtistaController {
     @POST
     @Path("/guardar")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response guardar(ArtistaDto obj)throws ResourceIllegalArgumentException {
+    public Response guardar(ArtistaDto obj)throws ResourceIllegalArgumentException,CloneNotSupportedException {
        this.service.guardar(obj);
        return Response.status(Response.Status.CREATED).build();
     }
