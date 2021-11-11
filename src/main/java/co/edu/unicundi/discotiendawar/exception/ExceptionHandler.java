@@ -23,6 +23,14 @@ public class ExceptionHandler implements ExceptionMapper<Exception> {
                                       e.getMessage(), 
                                       uriInfo.getPath());
             return Response.status(Response.Status.BAD_REQUEST).entity(ew).build();  
+            
+        } if (e instanceof CloneNotSupportedException ) { //409
+            ew = new ExceptionWraper(Response.Status.CONFLICT.getStatusCode(), 
+                                      Response.Status.CONFLICT.getReasonPhrase(), 
+                                      e.getMessage(), 
+                                      uriInfo.getPath());
+            return Response.status(Response.Status.CONFLICT).entity(ew).build();  
+            
         } else {
             ew = new ExceptionWraper(Response.Status.INTERNAL_SERVER_ERROR.getStatusCode(), 
                                       Response.Status.INTERNAL_SERVER_ERROR.getReasonPhrase(), 

@@ -1,7 +1,6 @@
 package co.edu.unicundi.discotiendawar.controller;
 
 import co.edu.unicundi.discotiendajar.dto.AlbumDto;
-import co.edu.unicundi.discotiendajar.entity.Album;
 import co.edu.unicundi.discotiendajar.exception.ResourceIllegalArgumentException;
 import co.edu.unicundi.discotiendajar.service.IAlbumService;
 import javax.ejb.*;
@@ -23,7 +22,7 @@ public class AlbumController {
     @POST
     @Path("/guardar")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response guardar(AlbumDto album) throws ResourceIllegalArgumentException {
+    public Response guardar(AlbumDto album) throws ResourceIllegalArgumentException, CloneNotSupportedException {
         this.service.guardar(album);
         return Response.status(Response.Status.CREATED).build();
     }
