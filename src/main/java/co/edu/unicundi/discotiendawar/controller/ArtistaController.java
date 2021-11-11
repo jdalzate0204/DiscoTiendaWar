@@ -39,9 +39,16 @@ public class ArtistaController {
     @POST
     @Path("/guardar")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response guardar(ArtistaDto obj)throws ResourceIllegalArgumentException {
+    public Response guardar(ArtistaDto obj)throws ResourceIllegalArgumentException, CloneNotSupportedException {
        this.service.guardar(obj);
        return Response.status(Response.Status.CREATED).build();
     }
     
+    @GET
+    @Path("/listarArtistas")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response obtenerArtistas() {
+        List<Artista> lista = this.service.listarSelect();
+        return Response.status(Response.Status.OK).entity(lista).build();
+    }
 }
