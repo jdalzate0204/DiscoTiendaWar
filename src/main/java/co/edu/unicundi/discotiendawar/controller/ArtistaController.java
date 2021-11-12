@@ -51,4 +51,11 @@ public class ArtistaController {
         List<Artista> lista = this.service.listarSelect();
         return Response.status(Response.Status.OK).entity(lista).build();
     }
+     @GET
+    @Path("/listar")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response obtenerLista() {
+        List<Artista> lista = this.service.listar();
+        return Response.status(Response.Status.OK).entity(lista).build();
+    }
 }
