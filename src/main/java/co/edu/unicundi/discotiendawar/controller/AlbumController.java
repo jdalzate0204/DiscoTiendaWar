@@ -1,12 +1,13 @@
 package co.edu.unicundi.discotiendawar.controller;
 
 import co.edu.unicundi.discotiendajar.dto.AlbumDto;
+import co.edu.unicundi.discotiendajar.entity.Album;
 import co.edu.unicundi.discotiendajar.exception.ResourceIllegalArgumentException;
 import co.edu.unicundi.discotiendajar.service.IAlbumService;
+import java.util.List;
 import javax.ejb.*;
 import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
+import javax.ws.rs.core.*;
 
 /**
  *
@@ -25,5 +26,13 @@ public class AlbumController {
     public Response guardar(AlbumDto album) throws ResourceIllegalArgumentException, CloneNotSupportedException {
         this.service.guardar(album);
         return Response.status(Response.Status.CREATED).build();
+    }
+    
+    @GET
+    @Path("/listar")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response listarAlbumes(){
+        List<Album> lista = this.service.listar();
+        return Response.status(Response.Status.OK).entity(lista).build();
     }
 }
