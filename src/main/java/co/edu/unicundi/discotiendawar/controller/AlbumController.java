@@ -35,4 +35,12 @@ public class AlbumController {
         List<Album> lista = this.service.listar();
         return Response.status(Response.Status.OK).entity(lista).build();
     }
+    
+    @GET
+    @Path("/listarAlbumes")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response listarSelect() {
+        List<Album> lista = this.service.listarSelect();
+        return Response.status(Response.Status.OK).entity(lista).build();
+    }
 }

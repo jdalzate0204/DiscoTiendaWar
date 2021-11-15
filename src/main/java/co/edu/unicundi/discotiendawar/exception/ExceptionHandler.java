@@ -17,12 +17,12 @@ public class ExceptionHandler implements ExceptionMapper<Exception> {
         e.printStackTrace();
         ExceptionWraper ew;
         
-        if (e instanceof ResourceIllegalArgumentException ) { //400
-            ew = new ExceptionWraper(Response.Status.BAD_REQUEST.getStatusCode(), 
-                                      Response.Status.BAD_REQUEST.getReasonPhrase(), 
-                                      e.getMessage(), 
+        if (e instanceof ResourceIllegalArgumentException | e instanceof IllegalArgumentException) { //400
+            ew = new ExceptionWraper(Response.Status.BAD_REQUEST.getStatusCode(),
+                                      Response.Status.BAD_REQUEST.getReasonPhrase(),
+                                      e.getMessage(),
                                       uriInfo.getPath());
-            return Response.status(Response.Status.BAD_REQUEST).entity(ew).build();  
+            return Response.status(Response.Status.BAD_REQUEST).entity(ew).build();
             
         } if (e instanceof CloneNotSupportedException ) { //409
             ew = new ExceptionWraper(Response.Status.CONFLICT.getStatusCode(), 
