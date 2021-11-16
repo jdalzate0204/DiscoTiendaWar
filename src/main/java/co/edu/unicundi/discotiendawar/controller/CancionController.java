@@ -1,6 +1,7 @@
 package co.edu.unicundi.discotiendawar.controller;
 
 import co.edu.unicundi.discotiendajar.dto.CancionDto;
+import co.edu.unicundi.discotiendajar.entity.Cancion;
 import co.edu.unicundi.discotiendajar.entity.Formato;
 import co.edu.unicundi.discotiendajar.exception.ResourceIllegalArgumentException;
 import co.edu.unicundi.discotiendajar.service.ICancionService;
@@ -24,15 +25,23 @@ public class CancionController {
     @Path("/listarFormato")
     @Produces(MediaType.APPLICATION_JSON)
     public Response obtenerFormato(){
-        List<Formato> lista = service.obtenerFormato();
+        List<Formato> lista = this.service.obtenerFormato();
         return Response.status(Response.Status.OK).entity(lista).build();
     }
     
     @POST
     @Path("/guardar")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response guardar(CancionDto cancion) throws ResourceIllegalArgumentException {
+    public Response guardar(CancionDto cancion) throws ResourceIllegalArgumentException, CloneNotSupportedException {
         this.service.guardar(cancion);
         return Response.status(Response.Status.CREATED).build();
+    }
+    
+    @GET
+    @Path("/listarCanciones")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response listarCanciones(){
+        List<Cancion> lista = this.service.listar();
+        return Response.status(Response.Status.OK).entity(lista).build();
     }
 }
